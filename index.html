@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>To Do</title>
+  </head>
+  <body class="container">
+    <header>
+      <h1 class="title">TO DO LIST</h1>
+      <form class="search" autocomplete="off">
+        <label for="search" class="sr-only"></label>
+        <input
+          class="input"
+          type="search"
+          id="search"
+          placeholder="Search task"
+        />
+        <img
+          class="input__img"
+          src="assets/lupa.svg"
+          alt="Clique aqui para pesquisar"
+        />
+      </form>
+    </header>
+    <main>
+      <div class="newTask">
+        <label for="tarefa"></label>
+        <input
+          class="input input-task"
+          type="text"
+          id="tarefa"
+          placeholder="Task title"
+        />
+        <label for="descricao"></label>
+        <input
+          class="input input-task"
+          type="text"
+          id="descricao"
+          placeholder="Description"
+        />
+        <button class="btn__addNew">Add new task</button>
+      </div>
+      <h2 class="tasks__title"></h2>
+      <div class="progresso">
+        <div class="progresso__status"></div>
+      </div>
+      <ul class="main__tasks"></ul>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
