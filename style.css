@@ -22,7 +22,8 @@ header {
   padding: 1rem 4rem;
 }
 
-.tasks__title {
+.allTasks__title, .allTasks__description {
+  line-height: 1rem;
   color: var(--text-color);
 }
 
@@ -33,7 +34,6 @@ header {
 
 .newTask {
   border-radius: 0.5rem;
-  gap: 2rem;
   padding: 1rem 0;
 }
 
@@ -55,6 +55,7 @@ header {
   background-color: var(--secondary-background-color);
   border: 1px solid var(--main-background-color);
   border-radius: 0.5rem;
+  margin-right: 2rem;
 }
 
 .input__img {
@@ -93,7 +94,7 @@ header {
   transition: 0.5s ease-in-out;
 }
 
-ul {
+.tasks {
   display: grid;
   grid-template-columns: 30% 30% 30%;
   column-gap: 5%;
@@ -106,13 +107,22 @@ ul {
   color: var(--text-color);
   height: 280px;
   border-radius: 0.5rem;
-  padding: 1.5rem;
+  padding: 1rem 2rem;
   background-color: var(--secondary-background-color);
+}
+
+.task:hover {
+  filter: brightness(1.2);
 }
 
 .task:has(.status--concluido) {
   background-color: var(--box-color);
   font-weight: 700;
+  text-decoration: line-through;
+}
+
+.task__description {
+  height: 4rem;
 }
 
 .task__status {
@@ -126,9 +136,7 @@ ul {
   padding: 0.5rem 1rem;
   cursor: pointer;
   font-weight: 700;
-}
-
-.status--pendente {
+  
   background-color: rgb(41, 41, 46);
 }
 
