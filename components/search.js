@@ -5,7 +5,7 @@ export const filterTasks = () => {
   if (filterElement.value != "") {
     for (let task of tasks) {
       let title = task.querySelector("h2");
-      let description = task.querySelector(".task__description");
+      let description = task.querySelector(".task-description");
       title = title.textContent.toLowerCase();
       description = description.textContent.toLowerCase();
 

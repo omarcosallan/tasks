@@ -1,6 +1,6 @@
 export function percentual() {
   const tasks = document.querySelectorAll(".task");
-  const tasksChecked = document.querySelectorAll(".status--concluido");
+  const tasksChecked = document.querySelectorAll(".checked");
   const progressEl = document.querySelector("[data-progress-status]");
   const percentual = (tasksChecked.length * 100) / tasks.length;
   progressEl.style.width = "" + percentual + "%";
@@ -15,6 +15,6 @@ export function allTasks() {
     "[data-allTask-description]"
   );
   allTasksDescription.innerText = `Checked (${
-    document.querySelectorAll(".status--concluido").length
+    document.querySelectorAll(".checked").length
   })`;
 }

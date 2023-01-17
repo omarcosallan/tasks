@@ -1,8 +1,10 @@
 * {
-  --main-background-color: rgb(18 18 20);
-  --secondary-background-color: rgb(32, 32, 36);
+  --main-background-color: rgba(24, 24, 32, 255);
+  --secondary-background-color: rgba(33, 33, 43, 255);
   --text-color: rgb(225, 225, 230);
-  --box-color: rgb(91 33 182);
+  --box-checked-color: rgba(91,53,214,255);
+  --options-color: rgb(41, 41, 46);
+  --green-color: rgb(4, 211, 97);
 
   box-sizing: border-box;
 }
@@ -38,8 +40,8 @@ header {
   text-align: center;
 }
 
-.allTasks__title,
-.allTasks__description {
+.allTasks-title,
+.allTasks-description {
   line-height: 1rem;
   color: var(--text-color);
 }
@@ -73,16 +75,16 @@ header {
   font-size: 1rem;
 }
 
-.input__img {
+.input-img {
   position: absolute;
   right: 1rem;
-  top: 0.8rem;
+  top: .9rem;
   cursor: pointer;
 }
 
-.btn__addNew {
+.btn-addNew {
   border: none;
-  background-color: var(--box-color);
+  background-color: var(--box-checked-color);
   padding: 1rem 3rem;
   color: var(--text-color);
   font-size: 1rem;
@@ -90,7 +92,7 @@ header {
   cursor: pointer;
 }
 
-.btn__addNew:hover {
+.btn-addNew:hover {
   filter: brightness(1.2);
 }
 
@@ -100,9 +102,9 @@ header {
   display: flex;
 }
 
-.progresso__status {
+.progresso-status {
   content: "";
-  background-color: rgb(4, 211, 97);
+  background-color: var(--green-color);
   transition: 0.5s ease-in-out;
 }
 
@@ -124,38 +126,42 @@ header {
   filter: brightness(1.2);
 }
 
-.task:has(.status--concluido) {
-  background-color: var(--box-color);
+.task:has(.checked) {
+  background-color: var(--box-checked-color);
   font-weight: 700;
   text-decoration: line-through;
 }
 
-.task__description {
+.task-description {
   height: 4rem;
 }
 
-.task__status {
-  border-top: 1px solid rgb(41, 41, 46);
+.task-status {
+  border-top: 1px solid var(--main-background-color);
   display: flex;
   justify-content: space-between;
 }
 
-.status {
+.options {
   padding: 0.5rem 1rem;
   cursor: pointer;
   font-weight: 700;
-  background-color: rgb(41, 41, 46);
+  background-color: var(--options-color);
+  display: inline-block;
 }
 
-.status--concluido {
-  background-color: rgb(4, 211, 97);
+.option-big {
+  width: 60%;
+  margin-right: .5rem;
+}
+
+.checked {
+  background-color: var(--green-color);
   color: var(--main-background-color);
 }
 
-.status__botao {
-  background-color: transparent;
-  border: none;
-  width: 40px;
+.delete {
+  background-color: rgba(233,63,63,255);
 }
 
 @media screen and (min-width: 768px) {

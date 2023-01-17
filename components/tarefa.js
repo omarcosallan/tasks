@@ -1,5 +1,6 @@
 import { carregaTarefa } from "./carregaTarefa.js";
 import { BotaoConclui } from "./concluirTarefa.js";
+import { BotaoDeleta } from "./deletarTarefa.js";
 
 export const addNewTask = (event) => {
   event.preventDefault();
@@ -47,15 +48,16 @@ export const Tarefa = ({ tarefa, descricao, dataCriacao, concluida }, id) => {
 
   const concluir = BotaoConclui(carregaTarefa, id);
   if (concluida) {
-    concluir.classList.toggle("status--concluido");
+    concluir.classList.add("checked");
   }
 
   task.innerHTML = `
-    <h2 class="task__title">${tarefa}</h2>
-    <p class="task__description">${descricao}</p>
-    <p class="task__date">${dataCriacao}</p>`;
+    <h2 class="task-title">${tarefa}</h2>
+    <p class="task-description">${descricao}</p>
+    <p class="task-date">${dataCriacao}</p>`;
 
   task.appendChild(concluir);
+  task.appendChild(BotaoDeleta(carregaTarefa, id));
   document.querySelector(".tasks").appendChild(task);
 
   return task;
