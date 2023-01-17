@@ -9,6 +9,7 @@ const concluirTarefa = (atualiza, id) => {
 export const BotaoConclui = (atualiza, id) => {
   const botaoConclui = document.createElement("p");
   botaoConclui.classList.add("status");
+  botaoConclui.classList.add("border-radius");
   botaoConclui.innerText = "Concluir";
 
   botaoConclui.addEventListener("click", () => concluirTarefa(atualiza, id));

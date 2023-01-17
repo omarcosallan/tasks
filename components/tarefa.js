@@ -1,18 +1,23 @@
 import { carregaTarefa } from "./carregaTarefa.js";
 import { BotaoConclui } from "./concluirTarefa.js";
 
-export const addNewTask = (evento) => {
-  evento.preventDefault();
+export const addNewTask = (event) => {
+  event.preventDefault();
+
+  const inputs = document.querySelectorAll(".input-task");
+  inputs.forEach((input) => {
+    input.style.display = "initial";
+  });
 
   const todoList = JSON.parse(localStorage.getItem("todo-list")) || [];
-
-  const tarefaEl = document.querySelector("#tarefa");
-  const descricaoEl = document.querySelector("#descricao");
-  const dataCriacao = new Date();
+ 
+  const tarefaEl = inputs[0];
+  const descricaoEl = inputs[1];
+  const dataCriacao = moment().format("DD/MM/YYYY, HH:mm");
   const concluida = false;
 
-  const tarefa = tarefaEl.value;
-  const descricao = descricaoEl.value;
+  const tarefa = tarefaEl.value.trim();
+  const descricao = descricaoEl.value.trim();
 
   if (tarefa != "" && descricao != "") {
     const dados = {
@@ -28,12 +33,17 @@ export const addNewTask = (evento) => {
     tarefaEl.value = "";
     descricaoEl.value = "";
     carregaTarefa();
+
+    inputs.forEach((input) => {
+      input.style.display = "none";
+    });
   }
 };
 
 export const Tarefa = ({ tarefa, descricao, dataCriacao, concluida }, id) => {
   const task = document.createElement("li");
   task.classList.add("task");
+  task.classList.add("border-radius");
 
   const concluir = BotaoConclui(carregaTarefa, id);
   if (concluida) {

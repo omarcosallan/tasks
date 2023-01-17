@@ -6,9 +6,15 @@ export const carregaTarefa = () => {
     JSON.parse(localStorage.getItem("todo-list")) || [];
   const lista = document.querySelector("[data-list]");
   lista.innerHTML = "";
-  tarefasCadastradas.forEach((tarefa, id) => {
-    lista.appendChild(Tarefa(tarefa, id));
-  });
+  if (tarefasCadastradas.length === 0) {
+    lista.style.display = "block";
+    lista.innerHTML = `<p class="noTasks">Nenhuma tarefa encontrada</p>`;
+  } else {
+    lista.style.display = "grid";
+    tarefasCadastradas.forEach((tarefa, id) => {
+      lista.appendChild(Tarefa(tarefa, id));
+    });
+  }
 
   percentual();
   allTasks();
