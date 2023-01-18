@@ -6,5 +6,4 @@ document.querySelector("[data-addNew]").addEventListener("click", addNewTask);
 
 document.querySelector("[data-search]").addEventListener("input", filterTasks);
 
-
 carregaTarefa();

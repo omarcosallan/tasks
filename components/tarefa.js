@@ -7,24 +7,30 @@ export const addNewTask = (event) => {
 
   const inputs = document.querySelectorAll(".input-task");
   inputs.forEach((input) => {
+    console.log(input.value);
     input.style.display = "initial";
   });
 
   const todoList = JSON.parse(localStorage.getItem("todo-list")) || [];
- 
+
   const tarefaEl = inputs[0];
   const descricaoEl = inputs[1];
-  const dataCriacao = moment().format("DD/MM/YYYY, HH:mm");
+  const dataConclusaoEl = inputs[2];
+  const dataCriacao = moment().format("DD-MM-YYYY HH:mm");
   const concluida = false;
 
   const tarefa = tarefaEl.value.trim();
   const descricao = descricaoEl.value.trim();
+  const dataConclusao = moment(dataConclusaoEl.value).format(
+    "DD-MM-YYYY HH:mm"
+  );
 
-  if (tarefa != "" && descricao != "") {
+  if (tarefa != "" && descricao != "" && dataConclusao != "Invalid date") {
     const dados = {
       tarefa,
       descricao,
       dataCriacao,
+      dataConclusao,
       concluida,
     };
 
@@ -41,7 +47,10 @@ export const addNewTask = (event) => {
   }
 };
 
-export const Tarefa = ({ tarefa, descricao, dataCriacao, concluida }, id) => {
+export const Tarefa = (
+  { tarefa, descricao, dataCriacao, dataConclusao, concluida },
+  id
+) => {
   const task = document.createElement("li");
   task.classList.add("task");
   task.classList.add("border-radius");
@@ -51,10 +60,19 @@ export const Tarefa = ({ tarefa, descricao, dataCriacao, concluida }, id) => {
     concluir.classList.add("checked");
   }
 
+  const dia = moment(dataConclusao, "DD-MM-YYYY HH:mm");
+  const diff = moment().diff(dia);
+  if (diff >= 0 && !concluida) {
+    concluir.classList.add("expired");
+  }
+
+  const criado = moment(dataCriacao, "DD-MM-YYYY HH:mm");
   task.innerHTML = `
     <h2 class="task-title">${tarefa}</h2>
     <p class="task-description">${descricao}</p>
-    <p class="task-date">${dataCriacao}</p>`;
+    <p class="task-date">Criado em ${moment(criado).format(
+      "DD-MM-YYYY HH:mm"
+    )}<br>Concluir até ${moment(dia).format("DD-MM-YYYY HH:mm")}</p>`;
 
   task.appendChild(concluir);
   task.appendChild(BotaoDeleta(carregaTarefa, id));
