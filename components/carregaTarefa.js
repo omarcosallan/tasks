@@ -15,7 +15,6 @@ export const carregaTarefa = () => {
       lista.appendChild(Tarefa(tarefa, id));
     });
   }
-
-  percentual();
   allTasks();
+  percentual();
 };
