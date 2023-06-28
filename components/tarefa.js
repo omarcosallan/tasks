@@ -6,44 +6,54 @@ export const addNewTask = (event) => {
   event.preventDefault();
 
   const inputs = document.querySelectorAll(".input-task");
-  inputs.forEach((input) => {
-    console.log(input.value);
-    input.style.display = "initial";
-  });
-
-  const todoList = JSON.parse(localStorage.getItem("todo-list")) || [];
-
-  const tarefaEl = inputs[0];
-  const descricaoEl = inputs[1];
-  const dataConclusaoEl = inputs[2];
-  const dataCriacao = moment().format("DD-MM-YYYY HH:mm");
-  const concluida = false;
-
-  const tarefa = tarefaEl.value.trim();
-  const descricao = descricaoEl.value.trim();
-  const dataConclusao = moment(dataConclusaoEl.value).format(
-    "DD-MM-YYYY HH:mm"
+  const isVisible = Array.from(inputs).every(
+    (input) => input.style.display === "initial"
   );
-
-  if (tarefa != "" && descricao != "" && dataConclusao != "Invalid date") {
-    const dados = {
-      tarefa,
-      descricao,
-      dataCriacao,
-      dataConclusao,
-      concluida,
-    };
-
-    const todoListAtualizado = [dados, ...todoList];
-    localStorage.setItem("todo-list", JSON.stringify(todoListAtualizado));
-
-    tarefaEl.value = "";
-    descricaoEl.value = "";
-    carregaTarefa();
-
+  if (!isVisible) {
     inputs.forEach((input) => {
-      input.style.display = "none";
+      input.style.display = "initial";
     });
+  } else {
+    const todoList = JSON.parse(localStorage.getItem("todo-list")) || [];
+
+    const tarefaEl = inputs[0];
+    const descricaoEl = inputs[1];
+    const dataConclusaoEl = inputs[2];
+    const dataCriacao = moment().format("DD-MM-YYYY HH:mm");
+    const concluida = false;
+
+    const tarefa = tarefaEl.value.trim();
+    const descricao = descricaoEl.value.trim();
+    const dataConclusao = moment(dataConclusaoEl.value).format(
+      "DD-MM-YYYY HH:mm"
+    );
+
+    if (tarefa != "" && descricao != "" && dataConclusao != "Invalid date") {
+      const dados = {
+        tarefa,
+        descricao,
+        dataCriacao,
+        dataConclusao,
+        concluida,
+      };
+
+      const todoListAtualizado = [dados, ...todoList];
+      localStorage.setItem("todo-list", JSON.stringify(todoListAtualizado));
+
+      tarefaEl.value = "";
+      descricaoEl.value = "";
+      carregaTarefa();
+
+      inputs.forEach((input) => {
+        input.style.display = "none";
+      });
+    } else {
+      document.querySelector(".error").innerText =
+        "ATENÇÃO! Preencha todos os campos.";
+      setTimeout(() => {
+        document.querySelector(".error").innerText = "";
+      }, 2500);
+    }
   }
 };
 

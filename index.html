@@ -18,9 +18,10 @@
     />
     <title>To Do</title>
   </head>
-  <body class="container">
+  <body class="container no-dark">
     <header>
       <h1 class="title"><a href="index.html">&#128203; TO DO LIST</a></h1>
+      <img class="dark-theme" src="" alt="" />
       <form class="search border-radius" autocomplete="off">
         <label for="search" class="sr-only"></label>
         <input
@@ -38,6 +39,7 @@
       </form>
     </header>
     <main>
+      <span class="error"> </span>
       <form class="newTask">
         <label for="tarefa"></label>
         <input
@@ -78,6 +80,9 @@
 
       <ul class="tasks" data-list></ul>
     </main>
+    <footer>
+      <div class="rodape">© 2023 Desenvolvido por Marcos Allan</div>
+    </footer>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"
       integrity="sha512-CryKbMe7sjSCDPl18jtJI5DR5jtkUWxPXWaLCst6QjH8wxDexfRJic2WRmRXmstr2Y8SxDDWuBO6CQC6IE4KTA=="

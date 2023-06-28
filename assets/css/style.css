@@ -1,13 +1,30 @@
 * {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.dark {
   --main-background-color: rgba(24, 24, 32, 255);
-  --secondary-background-color: rgba(33, 33, 43, 255);
+  --secondary-background-color: rgba(33, 33, 43);
+  --text-box-checked: rgb(225, 225, 230);
   --text-color: rgb(225, 225, 230);
   --box-checked-color: rgba(91, 53, 214, 255);
   --options-color: rgb(41, 41, 46);
   --green-color: rgb(4, 211, 97);
+}
 
-  box-sizing: border-box;
-  padding: 0;
+.no-dark {
+  --secondary-background-color: rgba(17, 17, 17, 0.1);
+  --text-box-checked: rgb(255, 255, 255);
+  --text-color: rgba(24, 24, 32, 255);
+  --box-checked-color: rgba(91, 53, 214, 255);
+  --options-color: rgba(17, 17, 17, 0.2);
+  --green-color: rgb(4, 211, 97);
+}
+
+.dark-theme {
+  width: 10%;
+  cursor: pointer;
 }
 
 body {
@@ -35,6 +52,11 @@ p {
 
 .border-radius {
   border-radius: 0.5rem;
+}
+
+.title {
+  width: 35%;
+  line-height: 1rem;
 }
 
 .title a {
@@ -97,7 +119,7 @@ p {
   border: none;
   background-color: var(--box-checked-color);
   padding: 1rem 3rem;
-  color: var(--text-color);
+  color: var(--text-box-checked);
   font-size: 1rem;
   font-weight: 700;
   cursor: pointer;
@@ -105,6 +127,10 @@ p {
 
 .btn-addNew:hover {
   filter: brightness(1.2);
+}
+
+.error {
+  color: rgba(233, 63, 63, 255);
 }
 
 .progresso {
@@ -142,6 +168,7 @@ p {
   background-color: var(--box-checked-color);
   font-weight: 700;
   text-decoration: line-through;
+  color: var(--text-box-checked);
 }
 
 .task:has(.expired) {
@@ -184,15 +211,26 @@ p {
 
 .checked {
   background-color: var(--green-color);
-  color: var(--main-background-color);
+  color: rgba(24, 24, 32, 255);
 }
 
 .delete {
   background-color: rgba(233, 63, 63, 255);
 }
 
+.rodape {
+  font-size: 0.8rem;
+  text-align: center;
+  color: var(--text-color);
+}
+
 @media screen and (min-width: 768px) {
+  .dark-theme {
+    width: 5%;
+  }
+
   .title {
+    width: 60%;
     font-size: 1.5rem;
   }
 
